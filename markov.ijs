@@ -20,16 +20,23 @@ NB. finding closed classes (cliques)
 CQ =: {{ if. 1=#~.c=.y{~I.x{y do. <I.{.c else. a: end. }}
 NB. recurrent classes of markov chain
 REC =: {{ a:-.~G CQ~"_ 0 I.~:G=.(+./ . *.&y)^:_ y=.y+.=/~i.#y=.y>0 }}
+NB. computing stationary distribution (for a given class, must be
+NB. aperiodic and irreducible)
+PI =: ((1,~0#~_1+#) %. 1,~ [: }: |:-=@i.@#)
 
 NB. drawing
 draw =: 3 : 0
  NB. draw using graphviz
  G=. 'digraph {',LF,'rankdir=LR;node[shape=circle,style=filled,colorscheme="set39"]',LF
 
- for_c. C=.REC M do.
+ for_c. C=.REC M do. c=.>c
+  PI_c =: PI c{c{"1 M NB. transition chain for class c
+  
   G=. G,'  subgraph cluster_',(":c_index),' {',LF
-  G=. G,'  style=rounded;label="Class ',(":1+c_index),'";',LF
-  for_v. ;c do.
+  G=. G,'  style=rounded;label="pi = ',(0j2":PI_c),'";',LF
+NB.  G=. G,'  style=rounded;',LF
+  
+  for_v. c do.
    G=. G,'  "',(v{::L),'" [fillcolor=',(":1+c_index),'];',LF
   end.
   G =. G,' }',LF

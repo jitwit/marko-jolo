@@ -11,9 +11,8 @@ l =: -.@[ * 1 (|.!.0) 0=]|i.@,~@] NB. 1-p if j=0, i<n
 m =: w + l + a@]                  NB. sum of the above
 M =: m >:                         NB. m with proper dimensions
 
-
 G =: conew'markov'
-create__G (<'Problem5'),(<M1)
+create__G (<'example'),(<M1)
 draw__G ''
 
 H =: conew'markov'
