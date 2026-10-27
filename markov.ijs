@@ -27,14 +27,13 @@ PI =: ((1,~0#~_1+#) %. 1,~ [: }: |:-=@i.@#)
 NB. drawing
 draw =: 3 : 0
  NB. draw using graphviz
- G=. 'digraph {',LF,'rankdir=LR;node[shape=circle,style=filled,colorscheme="set39"]',LF
+ G=. 'digraph {',LF,'rankdir=LR;node[shape=circle,style=filled,colorscheme="set39",fontname="CMU Concrete, Rockwell, Courier"]',LF
 
  for_c. C=.REC M do. c=.>c
   PI_c =: PI c{c{"1 M NB. transition chain for class c
-  
+
   G=. G,'  subgraph cluster_',(":c_index),' {',LF
-  G=. G,'  style=rounded;label="pi = ',(0j2":PI_c),'";',LF
-NB.  G=. G,'  style=rounded;',LF
+  G=. G,'  style=rounded;label="π = ',(0j2":PI_c),'";',LF
   
   for_v. c do.
    G=. G,'  "',(v{::L),'" [fillcolor=',(":1+c_index),'];',LF

@@ -1,0 +1,17 @@
+digraph {
+rankdir=LR;node[shape=circle,style=filled,colorscheme="set39",fontname="CMU Concrete, Rockwell, Courier"]
+  subgraph cluster_0 {
+  style=rounded;label="π = 0.28 0.31 0.40";
+  "RED" [fillcolor=1];
+  "WHITE" [fillcolor=1];
+  "BLUE" [fillcolor=1];
+ }
+  "RED"->"RED"[label="0.20",penwidth=2.2,color="0.600 1.0 0.8"];
+  "RED"->"BLUE"[label="0.80",penwidth=2.8,color="0.900 1.0 0.8"];
+  "WHITE"->"RED"[label="0.29",penwidth=2.28571,color="0.643 1.0 0.8"];
+  "WHITE"->"WHITE"[label="0.43",penwidth=2.42857,color="0.714 1.0 0.8"];
+  "WHITE"->"BLUE"[label="0.29",penwidth=2.28571,color="0.643 1.0 0.8"];
+  "BLUE"->"RED"[label="0.33",penwidth=2.33333,color="0.667 1.0 0.8"];
+  "BLUE"->"WHITE"[label="0.44",penwidth=2.44444,color="0.722 1.0 0.8"];
+  "BLUE"->"BLUE"[label="0.22",penwidth=2.22222,color="0.611 1.0 0.8"];
+}
