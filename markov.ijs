@@ -35,4 +35,5 @@ draw =: 3 : 0
  end. G=. G,'}',LF
  G 1!:2 < out,'.dot'
  2!:0 'dot -Tsvg ',out,'.dot -o ',out,'.svg'
+ out,'.svg'
 )
