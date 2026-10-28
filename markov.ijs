@@ -27,31 +27,32 @@ PI =: ((1,~0#~_1+#) %. 1,~ [: }: |:-=@i.@#)
 NB. drawing
 draw =: 3 : 0
  NB. draw using graphviz
- G=. 'digraph {',LF,'rankdir=LR;node[shape=circle,style=filled,colorscheme="set39",fontname="CMU Concrete, Rockwell, Courier"]',LF
+ DOT=. 'digraph {',LF,'rankdir=LR;node[shape=circle,style=filled'
+ DOT=. DOT,',colorscheme="set39",fontname="CMU Concrete, Rockwell, Courier"]',LF
 
  for_c. C=.REC M do. c=.>c
   PI_c =: PI c{c{"1 M NB. transition chain for class c
 
-  G=. G,'  subgraph cluster_',(":c_index),' {',LF
-  G=. G,'  style=rounded;label="π = ',(0j2":PI_c),'";',LF
+  DOT=. DOT,'  subgraph cluster_',(":c_index),' {',LF
+  DOT=. DOT,'  style=rounded;label="π = ',(0j2":PI_c),'";',LF
   
   for_v. c do.
-   G=. G,'  "',(v{::L),'" [fillcolor=',(":1+c_index),'];',LF
+   DOT=. DOT,'  "',(v{::L),'" [fillcolor=',(":(c_index>:1)+1+c_index),'];',LF
   end.
-  G =. G,' }',LF
+  DOT =. DOT,' }',LF
  end.
 
  for_t. (i.#M)-.;C do.
-  G=. G,'  "',(t{::L),'" [fillcolor="9"];',LF
+  DOT=. DOT,'  "',(t{::L),'" [fillcolor="2"];',LF
  end.
  
  for_uv. 4 $. $. M do.
   p =. M {~ < 'u v' =. uv
-  G=. G,'  "',(u{::L),'"->"',(v{::L),'"'
-  G=. G,'[label="',(0j2":p),'"'
-  G=. G,',penwidth=',(":2+p),',color="',(0j3":0.5+0.5*p),' 1.0 0.8"];',LF
- end. G=. G,'}',LF
- G 1!:2 < out,'.dot'
+  DOT=. DOT,'  "',(u{::L),'"->"',(v{::L),'"'
+  DOT=. DOT,'[label="',(0j2":p),'"'
+  DOT=. DOT,',penwidth=',(":2+p^3),',color="',(0j3":0.38+0.62*p),' 0.69 0.84"];',LF
+ end. DOT=. DOT,'}',LF
+ DOT 1!:2 < out,'.dot'
  2!:0 'dot -Tsvg ',out,'.dot -o ',out,'.svg'
  out,'.svg'
 )
