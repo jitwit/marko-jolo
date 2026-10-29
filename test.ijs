@@ -11,14 +11,8 @@ l =: -.@[ * 1 (|.!.0) 0=]|i.@,~@] NB. 1-p if j=0, i<n
 m =: w + l + a@]                  NB. sum of the above
 M =: m >:                         NB. m with proper dimensions
 
-G =: conew'markov'
-create__G (<'example'),(<M1)
-draw__G ''
+markov (<'example'),(<M1)
 
-H =: conew'markov'
-create__H (<'Urns'),(<M2),<;:'RED WHITE BLUE'
-draw__H''
+markov (<'Urns'),(<M2),<;:'RED WHITE BLUE'
 
-A =: conew'markov'
-create__A (<'adoption'),(<0.75 M 10),(<(<'DADA'),~(<@":)"0 ] i.10)
-draw__A''
+markov (<'adoption'),(<0.75 M 10),(<(<'DADA'),~(<@":)"0 ] i.10)
