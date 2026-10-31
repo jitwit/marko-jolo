@@ -10,3 +10,16 @@ markov 'example';M
 
 #+RESULTS:
 [[file:example.pdf]]
+
+* Installation
+
+From jconsole, with pacman:
+
+#+begin_src jpl :session :exports code
+install 'github:jitwit/marko-jolo@a'
+#+end_src
+
+#+RESULTS:
+: Package Manager will run in read-only mode, as you do not have access to the installation folder.
+: 
+: To run as root, open a terminal and use sudo to run J.
