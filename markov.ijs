@@ -10,18 +10,21 @@ NB. aperiodic and irreducible)
 PI =: ((1,~0#~_1+#) %. 1,~ [: }: |:-=@i.@#)
 
 NB. drawing
-draw =: 3 : 0
+draw =: 4 : 0
  NB. y should be a boxed array of arguments. the first argument is the
  NB. target file name, the argument is the marikov transition matrix
  NB. P, and the optional third is a potential labeling, defaulting to
  NB. 1+i.#P
- 
+ NB. x is extention type
+
  NB. parse arguments
  select. #y
  case. 2 do.
   L =: (<@":)"0 ] 1+i.#M [ 'out M' =: y
  case. 3 do.
   'out M L' =: y
+ case. 4 do.
+  'out M L ext' =: y
  case. do. 'bad arguments'
  end.
  
@@ -52,8 +55,16 @@ draw =: 3 : 0
   DOT=. DOT,',penwidth=',(":2+p^3),',color="',(0j3":0.38+0.62*p),' 0.69 0.84"];',LF
  end. DOT=. DOT,'}',LF
  DOT 1!:2 < out,'.dot'
- 2!:0 'dot -Tpdf ',out,'.dot -o ',out,'.pdf'
- out,'.pdf'
+ 2!:0 'dot -T',x,' ',out,'.dot -o ',out,'.',x
+ out,'.',x
 )
 
-markov_z_ =: draw_markov_
+markov =: 3 : 0
+ NB. optional dyadic argument x for selecting file type
+  'pdf' draw y
+ :
+  x draw y
+)
+
+
+markov_z_ =: markov_markov_
