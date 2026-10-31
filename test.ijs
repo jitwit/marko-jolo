@@ -2,7 +2,9 @@ load 'markov.ijs'
 
 M1 =: 0.1 * _5 ]\ 3 0 7 0 0  4 1 2 2 1  6 0 4 0 0  10 0 0 0 0  0 0 0 0 10
 M2 =: 0.0+_3 ]\ 1r5 0 4r5 2r7 3r7 2r7 1r3 4r9 2r9
+M3 =: _6 ]\ 0.5 0.5 0 0 0 0  0 0 1 0 0 0  1r3 0 0 1r3 1r3 0  0 0 0 1r2 1r2 0  0 0 0 0 0 1 0 0 0 0 1 0
 
+NB. chess adoption markov chains
 NB. markov chain matrix representing state of adoption match.
 NB. M_ij :
 w =: * (=<:)"0/~ @ i.             NB. p if i+1=j
@@ -16,3 +18,6 @@ markov (<'example'),(<M1)
 markov (<'Urns'),(<M2),<;:'RED WHITE BLUE'
 
 markov (<'adoption'),(<0.75 M 10),(<(<'DADA'),~(<@":)"0 ] i.10)
+
+markov 'chapter43';M3
+
