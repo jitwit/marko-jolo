@@ -23,8 +23,6 @@ draw =: 4 : 0
   L =: (<@":)"0 ] 1+i.#M [ 'out M' =: y
  case. 3 do.
   'out M L' =: y
- case. 4 do.
-  'out M L ext' =: y
  case. do. 'bad arguments'
  end.
  
@@ -66,5 +64,5 @@ markov =: 3 : 0
   x draw y
 )
 
-
+NB. TODO viewmarkov write image to j temp & let jpl-mode know about it
 markov_z_ =: markov_markov_
